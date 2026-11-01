@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../../_app/immutable/entry/start.SP_D4Z1_.js" rel="modulepreload">
+    <link href="../../_app/immutable/entry/start.CE2uDTxp.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/fruYDLqp.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/0Vu_x8kT.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BRmYwOUZ.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/Cbdj2qAo.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.rJ_JnvZi.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.BAgrn-aj.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BkYfdh9H.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BD3UdjSR.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/wnmzq4eU.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/TGQFHf5e.js" rel="modulepreload">
 		<link href="../../_app/immutable/nodes/0.CCpBT1ka.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/ybC49tkz.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/5.DuUNG45C.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/BM8GEZDP.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.G8zmslJb.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B7DXUDaD.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DFPV7QJw.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DxLlZHEF.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/iXLSwIXB.js" rel="modulepreload">
@@ -36,20 +36,20 @@ Lisbon and Toronto see different days for the same meeting. That points at time 
 not at date order. The desk had marked these in its notes but filed them under the parser.</li></ul> <h2>Why they were merged</h2> <p>Under <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> we merge on subject alone.
 All three problems produce the same subjects (“Wrong day on the invite”), so the subject
 rule cannot tell them apart. The intake tag can’t either: it guesses from the reporter’s
-browser, while the problem depends on the tenant and the way the report came in.</p> <h2>What to do now</h2> <ul><li>Keep #4471 for the parser problem. Route booking-v3 form reports to the hint ticket.</li> <li>When a report says the date moved by one day, check the time zones of everyone on the
-invite, and add it to the one-day ticket.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-5F7J-KK91</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+browser, while the problem depends on the tenant and the way the report came in.</p> <h2>Where they stand</h2> <p>Engineering closed #4471 on 5 October:</p> <ul><li><strong>parser</strong>: fixed (<code>fix(dates): parse dd/mm for eu locales</code>).</li> <li><strong>hint</strong>: won’t fix. The booking-v3 form is retired, and its hint went with it.</li> <li><strong>one-day</strong>: not covered by either. It stays open. When a report says the date moved by
+one day, check the time zones of everyone on the invite, and add it to the one-day ticket.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-5F7J-KK91</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_1y05mdw = {
+					__sveltekit_c9q47l = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.SP_D4Z1_.js"),
-						import("../../_app/immutable/entry/app.rJ_JnvZi.js")
+						import("../../_app/immutable/entry/start.CE2uDTxp.js"),
+						import("../../_app/immutable/entry/app.BAgrn-aj.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],

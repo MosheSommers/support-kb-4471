@@ -50,10 +50,13 @@ All three problems produce the same subjects ("Wrong day on the invite"), so the
 rule cannot tell them apart. The intake tag can't either: it guesses from the reporter's
 browser, while the problem depends on the tenant and the way the report came in.
 
-## What to do now
+## Where they stand
 
-- Keep #4471 for the parser problem. Route booking-v3 form reports to the hint ticket.
-- When a report says the date moved by one day, check the time zones of everyone on the
-  invite, and add it to the one-day ticket.
+Engineering closed #4471 on 5 October:
+
+- **parser**: fixed (`fix(dates): parse dd/mm for eu locales`).
+- **hint**: won't fix. The booking-v3 form is retired, and its hint went with it.
+- **one-day**: not covered by either. It stays open. When a report says the date moved by
+  one day, check the time zones of everyone on the invite, and add it to the one-day ticket.
 
 <RenderStamp {signature} />
