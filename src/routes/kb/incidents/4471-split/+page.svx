@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: Moshe Sommers
 status: open
 reviewed: 2026-10-31
-signature: Moshe Sommers
+signature: 'v1.eyJzdWIiOiI0NjgwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM1MDE0OTYsImV4cCI6MTc5MzU4Nzg5Nn0.m0wsMdNHC2jN1uQ5roFBsAFiSzAJqUi6T0ET0z6yWFM'
 ---
 
 <script>
