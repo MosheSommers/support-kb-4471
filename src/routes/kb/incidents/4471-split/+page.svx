@@ -1,0 +1,59 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: Moshe Sommers
+status: open
+reviewed: 2026-10-31
+signature: Moshe Sommers
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const ISSUES = {
+    parser: 'https://github.com/MosheSommers/support-kb-4471/issues/1',
+    hint: 'https://github.com/MosheSommers/support-kb-4471/issues/2',
+    'one-day': 'https://github.com/MosheSommers/support-kb-4471/issues/3',
+  };
+</script>
+
+[#4471](/kb/incidents/4471) says one bug: the parser reads dates month first. Its own table
+shows more than that. We read every report again, by what it says happened, and found three
+problems. Each one now has a ticket of its own.
+
+<Callout kind="warn">
+#4471 is not one issue. Fixing the parser closes only the first row below. The other two
+keep coming in.
+</Callout>
+
+## The problems
+
+<ProblemTable ticket={4471} issues={ISSUES} />
+
+## How to tell them apart
+
+- **parser**: the tenant writes the day first, and the report came in by app, email, or a
+  booking-v2 form. Day and month swap: 7 April becomes 4 July.
+- **hint**: the tenant runs booking-v3 and the report came through the form. The form tells
+  people to type `MM/DD/YYYY`, then reads what they typed day first. Day and month swap too,
+  so it looks like the parser bug. The fix is in the form, not the parser.
+- **one-day**: the date moves by one day, and day and month stay put. Tuesday becomes Monday;
+  Lisbon and Toronto see different days for the same meeting. That points at time zones,
+  not at date order. The desk had marked these in its notes but filed them under the parser.
+
+## Why they were merged
+
+Under [decision 0001](/kb/decisions/0001-dedupe-by-subject) we merge on subject alone.
+All three problems produce the same subjects ("Wrong day on the invite"), so the subject
+rule cannot tell them apart. The intake tag can't either: it guesses from the reporter's
+browser, while the problem depends on the tenant and the way the report came in.
+
+## What to do now
+
+- Keep #4471 for the parser problem. Route booking-v3 form reports to the hint ticket.
+- When a report says the date moved by one day, check the time zones of everyone on the
+  invite, and add it to the one-day ticket.
+
+<RenderStamp {signature} />

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../_app/immutable/entry/start.SP_D4Z1_.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/fruYDLqp.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/0Vu_x8kT.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Cbdj2qAo.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.rJ_JnvZi.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BkYfdh9H.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BD3UdjSR.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/wnmzq4eU.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/TGQFHf5e.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.CCpBT1ka.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/ybC49tkz.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.DuUNG45C.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BM8GEZDP.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DFPV7QJw.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DxLlZHEF.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/iXLSwIXB.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 · three problems, not one · support kb</title>
+		<link href="../../_app/immutable/assets/runbook.BhhgOc_n.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/Callout.yLErXQDM.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/5.CPeXMXS1.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Moshe Sommers</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-31 · 1 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> says one bug: the parser reads dates month first. Its own table
+shows more than that. We read every report again, by what it says happened, and found three
+problems. Each one now has a ticket of its own.</p> <aside class="warn svelte-17bri61"><!---->#4471 is not one issue. Fixing the parser closes only the first row below. The other two
+keep coming in.<!----></aside><!----> <h2>The problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>intake tagged otherwise</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code><br/><span class="what svelte-1op6c6">shared parser reads day-first dates month first</span></td><td><strong>374</strong></td><td>11</td><td>2026-04-01 → 2026-10-04</td><td>23</td><td><!--[0--><a href="https://github.com/MosheSommers/support-kb-4471/issues/1">support-kb-4471#1</a><!--]--></td></tr><tr><td><code>hint</code><br/><span class="what svelte-1op6c6">booking-v3 form hint says MM/DD, form reads DD/MM</span></td><td><strong>33</strong></td><td>3</td><td>2026-04-17 → 2026-09-22</td><td>15</td><td><!--[0--><a href="https://github.com/MosheSommers/support-kb-4471/issues/2">support-kb-4471#2</a><!--]--></td></tr><tr><td><code>one-day</code><br/><span class="what svelte-1op6c6">date moves by one day, not a day/month swap</span></td><td><strong>5</strong></td><td>5</td><td>2026-04-02 → 2026-10-04</td><td>5</td><td><!--[0--><a href="https://github.com/MosheSommers/support-kb-4471/issues/3">support-kb-4471#3</a><!--]--></td></tr><!--]--></tbody></table> <!--[--><p class="ids svelte-1op6c6"><code>one-day</code>: R-41202, R-41209, R-41236, R-41344, R-41620</p><!--]--><!----> <h2>How to tell them apart</h2> <ul><li><strong>parser</strong>: the tenant writes the day first, and the report came in by app, email, or a
+booking-v2 form. Day and month swap: 7 April becomes 4 July.</li> <li><strong>hint</strong>: the tenant runs booking-v3 and the report came through the form. The form tells
+people to type <code>MM/DD/YYYY</code>, then reads what they typed day first. Day and month swap too,
+so it looks like the parser bug. The fix is in the form, not the parser.</li> <li><strong>one-day</strong>: the date moves by one day, and day and month stay put. Tuesday becomes Monday;
+Lisbon and Toronto see different days for the same meeting. That points at time zones,
+not at date order. The desk had marked these in its notes but filed them under the parser.</li></ul> <h2>Why they were merged</h2> <p>Under <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> we merge on subject alone.
+All three problems produce the same subjects (“Wrong day on the invite”), so the subject
+rule cannot tell them apart. The intake tag can’t either: it guesses from the reporter’s
+browser, while the problem depends on the tenant and the way the report came in.</p> <h2>What to do now</h2> <ul><li>Keep #4471 for the parser problem. Route booking-v3 form reports to the hint ticket.</li> <li>When a report says the date moved by one day, check the time zones of everyone on the
+invite, and add it to the one-day ticket.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-5F7J-KK91</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1y05mdw = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.SP_D4Z1_.js"),
+						import("../../_app/immutable/entry/app.rJ_JnvZi.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
